@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchJoke } from "../actions/jokesActions";
+import { fetchJoke, addFavorite } from "../actions/jokesActions";
 
 const JokeList = () => {
   const dispatch = useDispatch();
@@ -13,6 +13,10 @@ const JokeList = () => {
 
   return (
     <div>
+      <p className="paragraph">
+        <i>A good laugh heals a lot of hurts.</i>
+        <p>— Madeleine L’Engle</p>
+      </p>
       {jokes && (
         <div className="jokes">
           <div className="photo-button">
@@ -27,7 +31,9 @@ const JokeList = () => {
           </p>
 
           <p>{jokes.punchline}</p>
-          <button className="like">Like</button>
+          <button className="like" onClick={() => dispatch(addFavorite(jokes))}>
+            Like
+          </button>
           <button className="next" onClick={() => dispatch(fetchJoke())}>
             Next
           </button>

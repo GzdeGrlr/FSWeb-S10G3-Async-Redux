@@ -3,7 +3,9 @@
   height: 100px;
   background-color: #d9e4ec;
 
-  padding: 1% 2%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .header h1 {
@@ -11,7 +13,7 @@
 }
 .App {
   display: flex;
-  margin: 7% auto;
+  margin: 3% auto;
   flex-direction: column;
 }
 
@@ -47,4 +49,17 @@
 .next {
   float: right;
   margin-right: 20px;
+}
+
+.favoritelist {
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto;
+  max-width: 50vw;
+  background: rgb(238, 182, 174);
+  background: radial-gradient(
+    circle,
+    rgba(238, 182, 174, 1) 0%,
+    rgba(148, 208, 233, 1) 100%
+  );
 }
