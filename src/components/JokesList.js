@@ -1,15 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchJoke, addFavorite } from "../actions/jokesActions";
+import { BsHeartFill } from "react-icons/bs";
+import { FcNext } from "react-icons/fc";
 
 const JokeList = () => {
   const dispatch = useDispatch();
   const jokes = useSelector((state) => state.jokes);
   const favorites = useSelector((state) => state.favorites);
+  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     dispatch(fetchJoke());
   }, []);
+
+  const handleAddFavorite = () => {
+    const favoriteList = favorites.filter((j) => j.id === jokes.id)[0];
+    !favoriteList && dispatch(addFavorite(jokes));
+    setSuccess(true);
+    setTimeout(() => setSuccess(false), 1300);
+  };
 
   return (
     <div>
@@ -31,12 +41,17 @@ const JokeList = () => {
           </p>
 
           <p>{jokes.punchline}</p>
-          <button className="like" onClick={() => dispatch(addFavorite(jokes))}>
-            Like
+          <button className="like" onClick={handleAddFavorite}>
+            Like <BsHeartFill style={{ color: "red" }} />
           </button>
           <button className="next" onClick={() => dispatch(fetchJoke())}>
-            Next
+            Next <FcNext style={{ fontSize: "20px" }} />
           </button>
+        </div>
+      )}
+      {success && (
+        <div className="message">
+          <p>Added To Your Favorites!</p>
         </div>
       )}
     </div>

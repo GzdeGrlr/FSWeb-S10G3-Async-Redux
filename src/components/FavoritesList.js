@@ -18,41 +18,42 @@ function FavoritesList() {
       >
         The Ones We Made You Smile
       </h5>
-      {favorites.length > 0 && (
-        <div className="favoritelist">
-          {" "}
-          {favorites.map((joke) => {
-            return (
-              <div key={joke.id}>
-                <ul>
-                  <li
-                    style={{
-                      fontSize: "18px",
-                    }}
-                  >
-                    {" "}
-                    {joke.setup}{" "}
-                    <span>
-                      <CiCircleRemove
-                        onClick={() => dispatch(removeFavorite(joke.id))}
-                        style={{
-                          fontSize: "35px",
-                          float: "right",
-                          cursor: "pointer",
-                        }}
-                      />
-                    </span>
-                  </li>
-                </ul>
 
-                <p>
-                  — {joke.punchline} <FaRegSmileBeam />
-                </p>
-              </div>
-            );
-          })}
-        </div>
-      )}
+      <div className="favoritelist">
+        {" "}
+        {favorites.map((joke) => {
+          return (
+            <div key={joke.id}>
+              <ul>
+                <li
+                  style={{
+                    fontSize: "18px",
+                  }}
+                >
+                  {" "}
+                  {joke.setup}{" "}
+                  <span>
+                    <CiCircleRemove
+                      onClick={() => {
+                        dispatch(removeFavorite(joke.id));
+                      }}
+                      style={{
+                        fontSize: "35px",
+                        float: "right",
+                        cursor: "pointer",
+                      }}
+                    />
+                  </span>
+                </li>
+              </ul>
+
+              <p>
+                — {joke.punchline} <FaRegSmileBeam />
+              </p>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

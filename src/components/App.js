@@ -23,7 +23,7 @@ function App() {
           style={{
             color: "black",
             textDecoration: "none",
-            backgroundColor: "rgb(219 172 128 / 80%)",
+            backgroundColor: "rgba(137, 172, 39, 0.41)",
             padding: "10px",
           }}
         >
